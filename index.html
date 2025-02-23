@@ -4,110 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VS Code Style Typing</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
-
-        body {
-            font-family: 'Fira Code', monospace;
-            background-color: #1e1e1e;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .editor-container {
-            width: 100%;
-            max-width: 800px;
-            background-color: #1e1e1e;
-            border-radius: 8px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            border: 2px solid #007acc;
-        }
-
-        .title-bar {
-            background-color: #252526;
-            padding: 8px;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 8px;
-            display: inline-block;
-        }
-
-        .red { background-color: #ff5f56; }
-        .yellow { background-color: #ffbd2e; }
-        .green { background-color: #27c93f; }
-
-        .file-name {
-            color: white;
-            font-size: 14px;
-            margin-left: auto;
-            margin-right: 15px;
-            font-weight: bold;
-        }
-
-    .code-editor {
-       padding: 15px;
-        min-height:400px;
-       font-size: 16px;
-       background-color: #1e1e1e;
-       font-family: 'Courier New', monospace;
-       color: #9CDCFE;
-       overflow-y: auto;
-       max-height: 300px;
-       white-space: pre-wrap;
-       word-wrap: break-word;
-       overflow-wrap: break-word;
-}
-#codeOutput {
-    display: block;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-        .keyword { color: #569CD6; }
-        .string { color: #CE9178; }
-        .comment { color: #6A9955; }
-        .function { color: #DCDCAA; }
-
-        textarea {
-            width: 90%;
-            max-width: 800px;
-            height: 50px;
-            background-color: #252526;
-            color: #ffffff;
-            font-size: 16px;
-            padding: 10px;
-            border: none;
-            margin-top: 10px;
-            font-family: 'Courier New', monospace;
-        }
-
-        button {
-            background-color: #007acc;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: 0.3s;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background-color: #005f99;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <textarea id="codeInput" placeholder="এখানে কোড লিখুন..."></textarea>
@@ -117,7 +14,6 @@
         <div class="title-bar">
             <span class="dot red"></span>
             <span class="dot yellow"></span>
-            <span class="dot green"></span>
             <span class="file-name">index.html</span>
         </div>
         <div class="code-editor">
@@ -125,27 +21,6 @@
         </div>
     </div>
 
-    <script>
-        function startTyping() {
-            let codeInput = document.getElementById("codeInput").value;
-            let outputDiv = document.getElementById("codeOutput");
-
-            outputDiv.innerHTML = ""; // আগের লেখা মুছে ফেলা
-            let index = 0;
-
-            function typeEffect() {
-                if (index < codeInput.length) {
-                    let char = codeInput.charAt(index);
-                    outputDiv.innerHTML += char === "\n" ? "<br>" : char; // নতুন লাইন হলে <br> যোগ হবে
-                    index++;
-                    setTimeout(typeEffect, 20); // টাইপিং স্পিড
-                } else {
-                    outputDiv.innerHTML = syntaxHighlight(outputDiv.innerHTML);
-                }
-            }
-
-            typeEffect();
-        }
-    </script>
+    <script src="script.js"> </script>
 </body>
 </html>
