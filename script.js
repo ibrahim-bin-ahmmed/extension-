@@ -25,6 +25,13 @@ function syntaxHighlight(code) {
         let rightColor = '#ffffff';
         return `<span style="color: ${leftColor};">${property}</span>${colon}<span style="color: ${rightColor};">${value}</span>${semicolon}`;
     });
-    code = code.replace(/\b(class|id)\b/g, `<span style="color: #005f99;">$1</span>`);
+
+
+    code = code.replace(/(&lt;\/?[a-zA-Z0-9\-]+)(\s*.*?)(\/?&gt;)/g, function(match, tag, attrs, close) {
+        return `<span style="color: #F39C12;">${tag}</span>${attrs}${close}`;
+    });
+
+    code = code.replace(/\b(class|id)\b/g, `<span style="color: #e5ee31;">$1</span>`);
+    code = code.replace(/\b(getElementById)\b/g, `<span style="color: #005f99;">$1</span>`);
     return code;
 }
